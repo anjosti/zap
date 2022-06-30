@@ -44,7 +44,7 @@ const Routes = () => {
               />
               <Route
                 exact
-                path="/Connections"
+                path="/connections"
                 component={Connections}
                 isPrivate
               />
