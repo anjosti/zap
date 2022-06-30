@@ -232,18 +232,6 @@ const Settings = () => {
 					</Select>
 				</Paper>
 
-				<Paper className={classes.paper}>
-					<TextField
-						id="api-token-setting"
-						readonly
-						label="Token Api"
-						margin="dense"
-						variant="outlined"
-						fullWidth
-						value={settings && settings.length > 0 && getSettingValue("userApiToken")}
-					/>
-				</Paper>
-
         <Paper className={classes.paper}>
           <Typography variant="body1">
             Tipo do Chatbot
