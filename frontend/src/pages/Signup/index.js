@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 import { Formik, Form, Field } from "formik";
 
 import {
-	Avatar,
 	Button,
 	CssBaseline,
 	TextField,
@@ -29,18 +28,21 @@ import { i18n } from "../../translate/i18n";
 import api from "../../services/api";
 import toastError from "../../errors/toastError";
 
-// const Copyright = () => {
-// 	return (
-// 		<Typography variant="body2" color="textSecondary" align="center">
-// 			{"Copyleft "}
-// 			<Link color="inherit" href="https://github.com/canove">
-// 				Canove
-// 			</Link>{" "}
-// 			{new Date().getFullYear()}
-// 			{"."}
-// 		</Typography>
-// 	);
-// };
+import { versionSystem } from "../../../package.json";
+import logo from '../../assets/logo.png';
+
+const Copyright = () => {
+	return (
+		<Typography variant="body2" color="textSecondary" align="center">
+			© {new Date().getFullYear()}
+			{" - "}
+			<Link color="inherit" href="https://owenzap.com">
+                             OwenZap - v {versionSystem}
+			</Link>
+			{"."}
+		</Typography>
+	);
+};
 
 const useStyles = makeStyles(theme => ({
 	paper: {
@@ -48,10 +50,6 @@ const useStyles = makeStyles(theme => ({
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
-	},
-	avatar: {
-		margin: theme.spacing(1),
-		backgroundColor: theme.palette.secondary.main,
 	},
 	form: {
 		width: "100%",
@@ -93,12 +91,7 @@ const SignUp = () => {
 		<Container component="main" maxWidth="xs">
 			<CssBaseline />
 			<div className={classes.paper}>
-				<Avatar className={classes.avatar}>
-					<LockOutlined />
-				</Avatar>
-				<Typography component="h1" variant="h5">
-					{i18n.t("signup.title")}
-				</Typography>
+				<img alt="logo" src={logo}></img>
 				{/* <form className={classes.form} noValidate onSubmit={handleSignUp}> */}
 				<Formik
 					initialValues={user}
@@ -178,23 +171,12 @@ const SignUp = () => {
 							>
 								{i18n.t("signup.buttons.submit")}
 							</Button>
-							<Grid container justifyContent="flex-end">
-								<Grid item>
-									<Link
-										href="#"
-										variant="body2"
-										component={RouterLink}
-										to="/login"
-									>
-										{i18n.t("signup.buttons.login")}
-									</Link>
-								</Grid>
-							</Grid>
+							
 						</Form>
 					)}
 				</Formik>
 			</div>
-			<Box mt={5}>{/* <Copyright /> */}</Box>
+			<Box mt={5}><Copyright /></Box>
 		</Container>
 	);
 };
