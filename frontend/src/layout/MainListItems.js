@@ -126,7 +126,7 @@ const MainListItems = (props) => {
           <>
             <Divider />
             <ListSubheader inset>
-              primary="Gerenciar Campanhas"
+              Gerenciar Campanhas
             </ListSubheader>
        
            <ListItemLink
