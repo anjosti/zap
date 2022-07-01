@@ -40,6 +40,11 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 
+    ticketNunber: {
+      color: "#808888",
+      padding: 8,
+    },
+
   messageCenter: {
     marginTop: 5,
     alignItems: "center",
@@ -577,6 +582,22 @@ const MessagesList = ({ ticketId, isGroup }) => {
     }
   };
 
+    const renderNumberTicket = (message, index) => {
+    if (index < messagesList.length && index > 0) {
+      let messageTicket = message.ticketId;
+      let previousMessageTicket = messagesList[index - 1].ticketId;
+
+      if (messageTicket !== previousMessageTicket) {
+        return (
+          <div key={`ticket-${message.id}`} className={classes.ticketNunber}>
+            #ticket: {messageTicket}
+            <hr />
+          </div>
+        );
+      }
+    }
+  };
+
   const renderMessageDivider = (message, index) => {
     if (index < messagesList.length && index > 0) {
       let messageUser = messagesList[index].fromMe;
@@ -621,6 +642,7 @@ const MessagesList = ({ ticketId, isGroup }) => {
           return (
             <React.Fragment key={message.id}>
               {renderDailyTimestamps(message, index)}
+              {renderNumberTicket(message, index)}
               {renderMessageDivider(message, index)}
               <div className={classes.messageCenter}>
                 <IconButton
@@ -651,6 +673,7 @@ const MessagesList = ({ ticketId, isGroup }) => {
           return (
             <React.Fragment key={message.id}>
               {renderDailyTimestamps(message, index)}
+              {renderNumberTicket(message, index)}
               {renderMessageDivider(message, index)}
               <div className={classes.messageLeft}>
                 <IconButton
@@ -685,6 +708,7 @@ const MessagesList = ({ ticketId, isGroup }) => {
           return (
             <React.Fragment key={message.id}>
               {renderDailyTimestamps(message, index)}
+              {renderNumberTicket(message, index)}
               {renderMessageDivider(message, index)}
               <div className={classes.messageRight}>
                 <IconButton
