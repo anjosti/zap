@@ -10,7 +10,7 @@
     },
     "servers": [
         {
-            "url": "https://apisac.pypress.com.br",
+            "url": "https://apibaileysv2.owebrasil.com",
             "description": "API Whaticket"
         }
     ],
@@ -36,7 +36,7 @@
                             "examples": {
                                 "SEND": {
                                     "value": {
-                                        "number": "5522999999999",
+                                        "number": "5527999999999",
                                         "body": "Mensagem de Teste da API"
                                     }
                                 }
