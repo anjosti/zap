@@ -28,6 +28,10 @@ const messages = {
           register: "Não tem um conta? Cadastre-se!",
         },
       },
+      copyright: {
+        title: "Whaticket",
+      },
+
       auth: {
         toasts: {
           success: "Login efetuado com sucesso!",
