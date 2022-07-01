@@ -21,7 +21,7 @@ import Tickets from "../pages/Tickets/";
 import Users from "../pages/Users";
 import Route from "./Route";
 import docs from "../pages/docs/";
-import docs from "../pages/swagger/";
+import swagger from "../pages/swagger/";
 import tokens from "../pages/tokens/";
 
 
