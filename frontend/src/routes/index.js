@@ -54,7 +54,7 @@ const Routes = () => {
               <Route exact path="/quickAnswers" component={QuickAnswers} isPrivate />
               <Route exact path="/Settings" component={Settings} isPrivate />
               <Route exact path="/docs" component={docs} isPrivate />
-              <Route exact path="/swagger" component={docs} isPrivate />
+              <Route exact path="/swagger" component={swagger} isPrivate />
               <Route exact path="/tokens" component={tokens} isPrivate />
               <Route exact path="/Queues" component={Queues} isPrivate />
               <Route exact path="/tags" component={Tags} isPrivate />
