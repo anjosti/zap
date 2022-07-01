@@ -176,6 +176,12 @@ const MainListItems = (props) => {
             />
 
             <ListItemLink
+              to="/swagger"
+              primary="Docs Swagger"
+              icon={<MenuBookIcon />}
+            />
+
+              <ListItemLink
               to="/docs"
               primary={i18n.t("mainDrawer.listItems.docs")}
               icon={<MenuBookIcon />}
