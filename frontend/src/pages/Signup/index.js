@@ -28,6 +28,7 @@ import { i18n } from "../../translate/i18n";
 import api from "../../services/api";
 import toastError from "../../errors/toastError";
 
+import { nomeEmpresa } from "../../../package.json";
 import { versionSystem } from "../../../package.json";
 import logo from '../../assets/logo.png';
 
@@ -37,7 +38,7 @@ const Copyright = () => {
 			© {new Date().getFullYear()}
 			{" - "}
 			<Link color="inherit" href="#">
-                             {i18n.t("copyright.title")} - v {versionSystem}
+                             {nomeEmpresa} - v {versionSystem}
 			</Link>
 			{"."}
 		</Typography>
