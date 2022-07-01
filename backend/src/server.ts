@@ -8,7 +8,7 @@ import swaggerUi from "swagger-ui-express";
 
 import swaggerDocs from "./swagger.json"
 
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 const server = app.listen(process.env.PORT, () => {
   logger.info(`Server started on port: ${process.env.PORT}`);
