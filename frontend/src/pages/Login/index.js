@@ -28,7 +28,7 @@ const Copyright = () => {
       © {new Date().getFullYear()}
       {" - "}
       <Link color="inherit" href="#">
-        Whaticket - v {versionSystem}
+        {i18n.t("copyright.title")} - v {versionSystem}
       </Link>
       {"."}
     </Typography>
