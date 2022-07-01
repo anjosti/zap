@@ -220,7 +220,7 @@ const LoggedInLayout = ({ children }) => {
             noWrap
             className={classes.title}
           >
-            Whaticket - v { versionSystem }
+            {i18n.t("copyright.title")} - v { versionSystem }
             
           </Typography>
 
