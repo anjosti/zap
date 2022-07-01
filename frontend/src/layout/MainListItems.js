@@ -174,8 +174,8 @@ const MainListItems = (props) => {
               primary={i18n.t("mainDrawer.listItems.tokens")}
               icon={<VpnKeyIcon />}
             />
-            
-             <ListItemLink
+
+            <ListItemLink
               to="/swagger"
               primary={i18n.t("mainDrawer.listItems.docs")}
               icon={<MenuBookIcon />}
@@ -183,7 +183,7 @@ const MainListItems = (props) => {
 
             <ListItemLink
               to="/docs"
-              Uso da API
+              primary="Uso API"
               icon={<MenuBookIcon />}
             />
 
