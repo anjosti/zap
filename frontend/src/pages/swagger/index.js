@@ -35,7 +35,7 @@ const ApiDocs = () => {
 	}, []);
 
     const back = process.env.REACT_APP_BACKEND_URL;
-    const endapi = "/swagger";
+    const endapi = "/api-docs";
     const urlapi = back.concat(endapi);
 
     return (
