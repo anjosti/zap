@@ -25,7 +25,7 @@ const authState = async (
 
   const saveState = async () => {
     try {
-      whatsapp.update({
+      await whatsapp.update({
         session: JSON.stringify({ creds, keys }, BufferJSON.replacer, 0)
       });
     } catch (error) {
@@ -52,20 +52,23 @@ const authState = async (
             let value = keys[key]?.[id];
             if (value) {
               if (type === "app-state-sync-key") {
-                value = proto.AppStateSyncKeyData.fromObject(value);
+                value = proto.Message.AppStateSyncKeyData.fromObject(value);
               }
+
               dict[id] = value;
             }
+
             return dict;
           }, {});
         },
         set: (data: any) => {
-          Object.keys(data).forEach(key => {
-            const keyNew = KEY_MAP[key as keyof SignalDataTypeMap];
-            keys[keyNew] = keys[keyNew] || {};
+          for (const _key in data) {
+            const key = KEY_MAP[_key as keyof SignalDataTypeMap];
+            keys[key] = keys[key];
+            if (!keys[key]) keys[key] = {};
+            Object.assign(keys[key], data[_key]);
+          }
 
-            Object.assign(keys[keyNew], data[key]);
-          });
           saveState();
         }
       }
