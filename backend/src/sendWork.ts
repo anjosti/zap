@@ -77,7 +77,7 @@ const sendMessageWhatsapp = async (jid: string, schedule: MassMessages) => {
     text: schedule.message
   });
 
-  await verifyMessage(send, contactAndTicket, contact, schedule.message);
+  await verifyMessage(send, contactAndTicket, contact);
 
   await schedule.update({
     status: "sent"
@@ -154,9 +154,7 @@ const processMessage = async (whatsappId: number) => {
   });
 
   if (!setting) {
-    logger.info(
-      `Configuração de envio não encontrada da conexão com id ${setting.whatsappId}`
-    );
+    logger.info("Configuração de envio não encontrada da conexão");
     return;
   }
 
@@ -210,7 +208,7 @@ export const runSendMessage = async (): Promise<void> => {
   if (!jobWork) {
     const whatsapps = await ListWhatsAppsService();
 
-    if(!whatsapps) {
+    if (!whatsapps) {
       logger.info("Não há conexões cadastradas");
       return;
     }
