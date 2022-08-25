@@ -35,6 +35,7 @@ import Setting from "../../models/Setting";
 import { debounce } from "../../helpers/Debounce";
 import UpdateTicketService from "../TicketServices/UpdateTicketService";
 import { sayChatbot } from "./ChatBotListener";
+import hourExpedient from "./hourExpedient";
 
 type Session = AnyWASocket & {
   id?: number;
@@ -797,7 +798,9 @@ const handleMessage = async (
     } else {
       await verifyMessage(msg, ticket, contact);
     }
-
+    
+    const checkExpedient = await hourExpedient();
+    if (checkExpedient) {
     if (
       !ticket.queue &&
       !isGroup &&
@@ -812,6 +815,32 @@ const handleMessage = async (
       if (!ticket.user) {
         await sayChatbot(ticket.queueId, wbot, ticket, contact, msg);
       }
+    }
+
+  } else {
+      const getLastMessageFromMe = await Message.findOne({
+        where: {
+          ticketId: ticket.id,
+          fromMe: true
+        },
+        order: [["createdAt", "DESC"]]
+      });
+      
+      if (
+        getLastMessageFromMe?.body ===
+        formatBody(`\u200e${whatsapp.outOfWorkMessage}`, contact)
+      )
+        return;
+
+      const body = formatBody(`\u200e${whatsapp.outOfWorkMessage}`, contact);
+      const sentMessage = await wbot.sendMessage(
+        `${contact.number}@${ticket.isGroup ? "g.us" : "s.whatsapp.net"}`,
+        {
+          text: body
+        }
+      );
+
+      await verifyMessage(sentMessage, ticket, contact);
     }
   } catch (err) {
     console.log(err);
