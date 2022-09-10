@@ -19,14 +19,12 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
 import MainListItems from "./MainListItems";
-
+import NotificationsPopOver from "../components/NotificationsPopOver";
 import UserModal from "../components/UserModal";
 import { AuthContext } from "../context/Auth/AuthContext";
 import BackdropLoading from "../components/BackdropLoading";
+import logodash from "../assets/logo-dash.png";
 import { i18n } from "../translate/i18n";
-import logo from "../assets/logo.png";
-import { versionSystem } from "../../package.json";
-import { nomeEmpresa } from "../../package.json";
 
 const drawerWidth = 240;
 
@@ -180,7 +178,7 @@ const LoggedInLayout = ({ children }) => {
         open={drawerOpen}
       >
         <div className={classes.toolbarIcon}>
-          <img src={logo} width={"80%"} style={{ marginLeft: 'auto' ,marginRight:'auto', display:'flex'}} />
+		<img src={logodash} alt="logo" />
           <IconButton onClick={() => setDrawerOpen(!drawerOpen)}>
             <ChevronLeftIcon />
           </IconButton>
@@ -221,11 +219,9 @@ const LoggedInLayout = ({ children }) => {
             noWrap
             className={classes.title}
           >
-            { nomeEmpresa } - v { versionSystem }
-            
+            Gallera.net | Seu WhatsApp Web em vários computadores!
           </Typography>
-
-          
+          {user.id && <NotificationsPopOver />}
 
           <div>
             <IconButton
