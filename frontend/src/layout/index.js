@@ -17,7 +17,7 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import NotificationsPopOver from "../components/NotificationsPopOver";
+
 import MainListItems from "./MainListItems";
 import NotificationsPopOver from "../components/NotificationsPopOver";
 import UserModal from "../components/UserModal";
@@ -219,7 +219,7 @@ const LoggedInLayout = ({ children }) => {
             noWrap
             className={classes.title}
           >
-            Gallera.net | Seu WhatsApp Web em vários computadores!
+            Whatsapp | Seu WhatsApp Web em vários computadores!
           </Typography>
           {user.id && <NotificationsPopOver />}
 
